@@ -55,7 +55,7 @@ export function MsgErrDay(Day, Month) {
   const DayMax = MonthJour(Month, FullYear);
   if (Day > DayMax) {
     return "Must be a valid date";
-  } else if (Day != "" && Day < DayMax) {
+  } else if (Day != "" && Day <= DayMax) {
     return true;
   } else {
     return "This field is required";
@@ -64,7 +64,7 @@ export function MsgErrDay(Day, Month) {
 export function MsgErrMonth(Month) {
   if (Month > 12) {
     return "Must be a valid month";
-  } else if (Month != "" && Month < 12) {
+  } else if (Month != "" && Month <= 12) {
     return true;
   } else {
     return "This field is required";
@@ -74,7 +74,7 @@ export function MsgErrMonth(Month) {
 export function MsgErrYear(Year) {
   const date = new Date();
   const FullYear = date.getFullYear();
-  if (Year > FullYear) {
+  if (Year >= FullYear) {
     return "Must be in the past";
   } else if (Year != "" && Year < FullYear) {
     return true;
