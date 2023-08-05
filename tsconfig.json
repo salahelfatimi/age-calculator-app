@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/datebirth.jsx", "app/layout.tsx", "app/page.jsx", "function/monthJour.jsx"],
   "exclude": ["node_modules"]
 }
