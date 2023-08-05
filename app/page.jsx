@@ -43,25 +43,20 @@ export default function Home() {
           <label htmlFor="MONTH" className="text-[#686868]  font-semibold">MONTH</label>
           <input type="number" placeholder="MM" onChange={(e)=>(setInput({...input , Month:parseInt(e.target.value)}))} name="MONTH" id="MONTH" className="border border-gray-400 rounded p-2" />
           <span className=" text-[0.50rem] text-red-500">{msg.MsgMonth}</span>
-
         </div>
+
         <div className="flex flex-col w-24 pl-4">
           <label htmlFor="YEAR" className="text-[#686868] font-semibold ">YEAR</label>
           <input type="number" placeholder="YYYY" onChange={(e)=>(setInput({...input , Year:parseInt(e.target.value)}))} name="YEAR" id="YEAR" className="border border-gray-400 rounded p-2" />
           <span className=" text-[0.52rem] text-red-500">{msg.MsgYear}</span>
-
         </div>
        
       </div>
       <div className="flex justify-center sm:justify-end relative bottom-6  " >
-        <button onClick={GetAge} className="bg-[#864cff] rounded-full text-white p-3 absolute " >
-          
+        <button onClick={GetAge} className="bg-[#864cff] rounded-full text-white p-3 absolute " > 
         <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" ><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>        </button>
-
       </div>
       <Datebirth data={age} msg={msg}/>
-     
-
     </div> 
   </div>
 </div>
