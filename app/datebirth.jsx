@@ -1,9 +1,7 @@
 "use client";
 
 function Datebirth({data,msg}) {
-
-  const Coundition=data.year==""||data.month=="" ||data.day==""   || data=='' || msg.MsgYear!=true || msg.MsgMonth!=true || msg.MsgDay!=true
-
+  const Coundition= data=='' || msg.MsgYear.Coun===false || msg.MsgMonth.Coun===false || msg.MsgDay.Coun===false
   return (
     <>
       <div className=" sm:pt-4 pt-8 text-6xl font-extrabold ">

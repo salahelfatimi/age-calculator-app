@@ -1,21 +1,13 @@
+const date = new Date();
+  const FullYear = date.getFullYear();
+  const FullMonth = date.getMonth() + 1;
+  const FullDay = date.getDate();
+
 export function MonthJour(Month, Year) {
   return new Date(Year, Month, 0).getDate();
 }
 
 export function Age(Year, Month, Jour) {
-  if (!Year || !Month || !Jour) {
-    return {
-      year: "",
-      month: "",
-      day: "",
-    };
-  }
-
-  const date = new Date();
-  const FullYear = date.getFullYear();
-  const FullMonth = date.getMonth() + 1;
-  const FullDay = date.getDate();
-
   // Calculate the age in years, months, and days
   let ageYears = FullYear - Year;
   let ageMonths = FullMonth - Month;
@@ -34,51 +26,41 @@ export function Age(Year, Month, Jour) {
     ageMonths--;
   }
 
-  if (ageYears === 0 && ageMonths === 0 && ageDays === 0) {
-    return {
-      year: "",
-      month: "",
-      day: "",
-    };
-  } else {
+ 
     return {
       year: ageYears,
       month: ageMonths,
       day: ageDays,
     };
-  }
+  
 }
 
-export function MsgErrDay(Day, Month) {
-  const date = new Date();
-  const FullYear = date.getFullYear();
+export function MsgErrDay(Day, Month,Year) {
   const DayMax = MonthJour(Month, FullYear);
-  if (Day > DayMax) {
-    return "Must be a valid date";
+  if (Day > DayMax ||( Day>FullDay && Year==FullYear && Month===FullMonth)) {
+    return {Msg:"Must be a valid Day",Coun:false};
   } else if (Day != "" && Day <= DayMax) {
-    return true;
+    return  {Coun:true};
   } else {
-    return "This field is required";
+    return {Msg:"This field is required",Coun:false};
   }
 }
-export function MsgErrMonth(Month) {
-  if (Month > 12) {
-    return "Must be a valid month";
+export function MsgErrMonth(Month,Year) {
+  if (Month > 12 || (Month >FullMonth && Year==FullYear)) {
+    return {Msg:"Must be a valid Month",Coun:false};
   } else if (Month != "" && Month <= 12) {
-    return true;
+    return {Coun:true};
   } else {
-    return "This field is required";
+    return {Msg:"This field is required",Coun:false};
   }
 }
 
 export function MsgErrYear(Year) {
-  const date = new Date();
-  const FullYear = date.getFullYear();
-  if (Year >= FullYear) {
-    return "Must be in the past";
-  } else if (Year != "" && Year < FullYear) {
-    return true;
+  if (Year > FullYear ) {
+    return {Msg:"Must be in the Past",Coun:false};
+  } else if (Year != "" && Year <= FullYear) {
+    return  {Coun:true};
   } else {
-    return "This field is required";
+    return {Msg:"This field is required",Coun:false};
   }
 }

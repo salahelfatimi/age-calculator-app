@@ -1,5 +1,5 @@
 "use client"
-import {useState } from "react";
+import {useEffect, useState } from "react";
 import Datebirth from "./datebirth";
 import {Age, MsgErrDay, MsgErrMonth, MsgErrYear} from "@/function/monthJour";
 
@@ -17,14 +17,19 @@ export default function Home() {
     MsgMonth:""
   })
   const [age,setAge]=useState([])
-  const GetAge=()=>{
-    setMsg({
-      MsgDay:MsgErrDay(input.Day,input.Month),
+  const GetAge=  ()=>{
+    setMsg ({
+      MsgDay :MsgErrDay(input.Day,input.Month ,input.Year),
       MsgYear:MsgErrYear(input.Year),
-      MsgMonth:MsgErrMonth(input.Month)
+      MsgMonth:MsgErrMonth(input.Month,input.Year)
     })
-    setAge(Age(input.Year,input.Month,input.Day))
+    
   }
+  useEffect(() => {
+    if (msg.MsgDay.Coun === true && msg.MsgMonth.Coun === true && msg.MsgYear.Coun === true) {
+      setAge(Age(input.Year, input.Month, input.Day));
+    }
+  }, [msg]);
  
 
   return <>
@@ -35,22 +40,22 @@ export default function Home() {
     <div className=" bg-[#FFFFFF] p-4 sm:p-8  rounded-t-xl rounded-bl-xl rounded-br-[7rem]  ">
       <div className="flex border-b-2 sm:pb-8 pb-12 sm:pr-24 ">
         <div className="flex flex-col w-24 pr-4">
-          <label htmlFor="DAY" className="text-[#686868] font-semibold ">DAY</label>
-          <input type="number"  placeholder="DD" onChange={(e)=>(setInput({...input , Day:parseInt(e.target.value)}))} name="DAY" id="DAY" className="border border-gray-400 rounded p-2" />
-          <span className=" text-[0.52rem] text-red-500">{msg.MsgDay}</span>
+          <label htmlFor="DAY" className={`font-semibold ${msg.MsgDay.Coun===true || msg.MsgDay==""?'text-[#686868]':' text-red-600'}`} >DAY</label>
+          <input type="number"  placeholder="DD" onChange={(e)=>(setInput({...input , Day:parseInt(e.target.value)}))} name="DAY" id="DAY" className={`border rounded p-2 ${msg.MsgDay.Coun===true || msg.MsgDay==""?'border-gray-400':' border-red-600'}`}  />
+          <span className=" text-[0.52rem] text-red-500">{msg.MsgDay.Msg}</span>
         </div>
         <div className="flex flex-col w-24 px-2">
-          <label htmlFor="MONTH" className="text-[#686868]  font-semibold">MONTH</label>
-          <input type="number" placeholder="MM" onChange={(e)=>(setInput({...input , Month:parseInt(e.target.value)}))} name="MONTH" id="MONTH" className="border border-gray-400 rounded p-2" />
-          <span className=" text-[0.50rem] text-red-500">{msg.MsgMonth}</span>
+          <label htmlFor="MONTH" className={`font-semibold ${msg.MsgDay.Coun===true || msg.MsgDay==""?'text-[#686868]':' text-red-600'}`} >MONTH</label>
+          <input type="number" placeholder="MM" onChange={(e)=>(setInput({...input , Month:parseInt(e.target.value)}))} name="MONTH" id="MONTH" className={` border rounded p-2 ${msg.MsgDay.Coun===true || msg.MsgDay==""?'border-gray-400':' border-red-600 '}`}  />
+          <span className=" text-[0.50rem] text-red-500">{msg.MsgMonth.Msg}</span>
         </div>
 
         <div className="flex flex-col w-24 pl-4">
-          <label htmlFor="YEAR" className="text-[#686868] font-semibold ">YEAR</label>
-          <input type="number" placeholder="YYYY" onChange={(e)=>(setInput({...input , Year:parseInt(e.target.value)}))} name="YEAR" id="YEAR" className="border border-gray-400 rounded p-2" />
-          <span className=" text-[0.52rem] text-red-500">{msg.MsgYear}</span>
+          <label htmlFor="YEAR" className={`font-semibold ${msg.MsgDay.Coun===true || msg.MsgDay==""?'text-[#686868]':' text-red-600'}`} >YEAR</label>
+          <input type="number" placeholder="YYYY" onChange={(e)=>(setInput({...input , Year:parseInt(e.target.value)}))} name="YEAR" id="YEAR" className={`border rounded p-2 ${msg.MsgDay.Coun===true || msg.MsgDay==""?'border-gray-400':' border-red-600'}`}  />
+          <span className=" text-[0.52rem] text-red-500">{msg.MsgYear.Msg}</span>
         </div>
-       
+        
       </div>
       <div className="flex justify-center sm:justify-end relative bottom-6  " >
         <button onClick={GetAge} className="bg-[#864cff] rounded-full text-white p-3 absolute " > 
