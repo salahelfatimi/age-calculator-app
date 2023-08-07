@@ -35,7 +35,7 @@ export default function Home() {
   return <>
  
 
-  <div className="h-screen bg-[#DBDBDB] p-2">
+  <div className=" bg-[#DBDBDB] p-2">
   <div className="flex justify-center min-h-screen items-center ">
     <div className=" bg-[#FFFFFF] p-4 sm:p-8  rounded-t-xl rounded-bl-xl rounded-br-[7rem]  ">
       <div className="flex border-b-2 sm:pb-8 pb-12 sm:pr-24 ">
