@@ -45,14 +45,14 @@ export default function Home() {
           <span className=" text-[0.52rem] text-red-500">{msg.MsgDay.Msg}</span>
         </div>
         <div className="flex flex-col w-24 px-2">
-          <label htmlFor="MONTH" className={`font-semibold ${msg.MsgDay.Coun===true || msg.MsgDay==""?'text-[#686868]':' text-red-600'}`} >MONTH</label>
-          <input type="number" placeholder="MM" onChange={(e)=>(setInput({...input , Month:parseInt(e.target.value)}))} name="MONTH" id="MONTH" className={` border rounded p-2 ${msg.MsgDay.Coun===true || msg.MsgDay==""?'border-gray-400':' border-red-600 '}`}  />
+          <label htmlFor="MONTH" className={`font-semibold ${msg.MsgMonth.Coun===true || msg.MsgMonth==""?'text-[#686868]':' text-red-600'}`} >MONTH</label>
+          <input type="number" placeholder="MM" onChange={(e)=>(setInput({...input , Month:parseInt(e.target.value)}))} name="MONTH" id="MONTH" className={` border rounded p-2 ${msg.MsgMonth.Coun===true || msg.MsgMonth==""?'border-gray-400':' border-red-600 '}`}  />
           <span className=" text-[0.50rem] text-red-500">{msg.MsgMonth.Msg}</span>
         </div>
 
         <div className="flex flex-col w-24 pl-4">
-          <label htmlFor="YEAR" className={`font-semibold ${msg.MsgDay.Coun===true || msg.MsgDay==""?'text-[#686868]':' text-red-600'}`} >YEAR</label>
-          <input type="number" placeholder="YYYY" onChange={(e)=>(setInput({...input , Year:parseInt(e.target.value)}))} name="YEAR" id="YEAR" className={`border rounded p-2 ${msg.MsgDay.Coun===true || msg.MsgDay==""?'border-gray-400':' border-red-600'}`}  />
+          <label htmlFor="YEAR" className={`font-semibold ${msg.MsgYear.Coun===true || msg.MsgYear==""?'text-[#686868]':' text-red-600'}`} >YEAR</label>
+          <input type="number" placeholder="YYYY" onChange={(e)=>(setInput({...input , Year:parseInt(e.target.value)}))} name="YEAR" id="YEAR" className={`border rounded p-2 ${msg.MsgYear.Coun===true || msg.MsgYear==""?'border-gray-400':' border-red-600'}`}  />
           <span className=" text-[0.52rem] text-red-500">{msg.MsgYear.Msg}</span>
         </div>
         
